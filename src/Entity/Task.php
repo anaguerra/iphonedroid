@@ -11,7 +11,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
  * @ORM\Table(name="tasks", indexes={@ORM\Index(name="fk_tasks_project_idx", columns={"project_id"})})
  * @ORM\Entity
  */
-class Tasks
+class Task
 {
     /**
      * @var int
@@ -39,9 +39,9 @@ class Tasks
     private $description;
 
     /**
-     * @var Projects
+     * @var Project
      *
-     * @ORM\ManyToOne(targetEntity="Projects")
+     * @ORM\ManyToOne(targetEntity="Project")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="project_id", referencedColumnName="project_id")
      * })
@@ -82,12 +82,12 @@ class Tasks
         return $this;
     }
 
-    public function getProject(): Projects
+    public function getProject(): Project
     {
         return $this->project;
     }
 
-    public function setProject(Projects $project): self
+    public function setProject(Project $project): self
     {
         $this->project = $project;
         return $this;

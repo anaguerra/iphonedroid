@@ -3,7 +3,7 @@
 
 namespace App\Controller;
 
-use App\Entity\Projects;
+use App\Entity\Project;
 use App\Repository\ProjectRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -81,7 +81,7 @@ class ProjectController extends AbstractController
 
             $user = $this->container->get('security.token_storage')->getToken()->getUser();
 
-            $projects = new Projects();
+            $projects = new Project();
             $projects->setUser($user)
                 ->setName($json->name)
                 ->setDescription($json->description);

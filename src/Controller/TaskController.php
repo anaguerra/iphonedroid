@@ -3,7 +3,7 @@
 
 namespace App\Controller;
 
-use App\Entity\Tasks;
+use App\Entity\Task;
 use App\Repository\TaskRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -80,7 +80,7 @@ class TaskController extends AbstractController
 
             $project = $this->taskRepository->findProject($json->project_id);
 
-            $tasks = new Tasks();
+            $tasks = new Task();
             $tasks->setProject($project)
                 ->setName($json->name)
                 ->setDescription($json->description);

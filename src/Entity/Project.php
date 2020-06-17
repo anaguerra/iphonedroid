@@ -6,12 +6,12 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
- * Projects
+ * Project
  *
  * @ORM\Table(name="projects", indexes={@ORM\Index(name="fk_projects_user_idx", columns={"user_id"})})
  * @ORM\Entity
  */
-class Projects
+class Project
 {
     /**
      * @var int
@@ -40,9 +40,9 @@ class Projects
     private $description;
 
     /**
-     * @var Users
+     * @var User
      *
-     * @ORM\ManyToOne(targetEntity="Users")
+     * @ORM\ManyToOne(targetEntity="User")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="user_id", referencedColumnName="user_id")
      * })
@@ -82,12 +82,12 @@ class Projects
         return $this;
     }
 
-    public function getUser(): Users
+    public function getUser(): User
     {
         return $this->user;
     }
 
-    public function setUser(Users $user): self
+    public function setUser(User $user): self
     {
         $this->user = $user;
         return $this;

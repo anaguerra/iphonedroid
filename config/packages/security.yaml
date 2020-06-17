@@ -1,6 +1,6 @@
 security:
     encoders:
-        App\Entity\Users:
+        App\Entity\User:
             algorithm: bcrypt
 
 
@@ -8,7 +8,7 @@ security:
     providers:
         app_user_provider:
             entity:
-                class: App\Entity\Users
+                class: App\Entity\User
                 property: name
                 # optional: if you're using multiple Doctrine entity
                 # managers, this option defines which one to use

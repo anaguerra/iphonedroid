@@ -2,18 +2,18 @@
 
 namespace App\Repository;
 
-use App\Entity\Projects;
-use App\Entity\Users;
+use App\Entity\Project;
+use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\Serializer\SerializerInterface;
 
 /**
- * @method Projects|null find($id, $lockMode = null, $lockVersion = null)
- * @method Projects|null findOneBy(array $criteria, array $orderBy = null)
- * @method Projects[]    findAll()
- * @method Projects[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Project|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Project|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Project[]    findAll()
+ * @method Project[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
 class ProjectRepository extends ServiceEntityRepository
 {
@@ -23,17 +23,17 @@ class ProjectRepository extends ServiceEntityRepository
 
     public function __construct(ManagerRegistry $registry, EntityManagerInterface $em)
     {
-        parent::__construct($registry, Projects::class);
+        parent::__construct($registry, Project::class);
         $this->em = $em;
     }
 
-    public function save(Projects $projects)
+    public function save(Project $projects)
     {
         $this->em->persist($projects);
         $this->em->flush();
     }
 
-    public function remove(Projects $projects)
+    public function remove(Project $projects)
     {
         $this->em->remove($projects);
         $this->em->flush();

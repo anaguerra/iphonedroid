@@ -7,12 +7,12 @@ use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
- * Users
+ * User
  *
  * @ORM\Table(name="users")
  * @ORM\Entity
  */
-class Users implements UserInterface
+class User implements UserInterface
 {
     /**
      * @var int

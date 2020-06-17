@@ -2,17 +2,17 @@
 
 namespace App\Repository;
 
-use App\Entity\Projects;
-use App\Entity\Tasks;
+use App\Entity\Project;
+use App\Entity\Task;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @method Tasks|null find($id, $lockMode = null, $lockVersion = null)
- * @method Tasks|null findOneBy(array $criteria, array $orderBy = null)
- * @method Tasks[]    findAll()
- * @method Tasks[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Task|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Task|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Task[]    findAll()
+ * @method Task[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
 class TaskRepository extends ServiceEntityRepository
 {
@@ -21,24 +21,24 @@ class TaskRepository extends ServiceEntityRepository
 
     public function __construct(ManagerRegistry $registry, EntityManagerInterface $em, ProjectRepository $projectRepository)
     {
-        parent::__construct($registry, Tasks::class);
+        parent::__construct($registry, Task::class);
         $this->em = $em;
         $this->projectRepository = $projectRepository;
     }
 
-    public function save(Tasks $projects)
+    public function save(Task $projects)
     {
         $this->em->persist($projects);
         $this->em->flush();
     }
 
-    public function remove(Tasks $projects)
+    public function remove(Task $projects)
     {
         $this->em->remove($projects);
         $this->em->flush();
     }
 
-    public function findProject(int $id) : Projects
+    public function findProject(int $id) : Project
     {
         return $this->projectRepository->find($id);
     }
